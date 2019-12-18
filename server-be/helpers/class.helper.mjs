@@ -1,20 +1,19 @@
 import Class from '../models/class.pg.mjs'
+import Sequelize from 'sequelize'
 
 const create = async (data) => {
     try {
         let createdClass = {}
         createdClass = await Class.create({
+            lecture: data.lecture,
             code: data.code,
-            studentNumber: data.studentNumber,
-            semester: data.semester,
+            classSectionCode: data.classSectionCode,
+            teacherCode: data.teacherCode,
             day: data.day,
-            startTime: data.startTime,
+            startAt: data.startAt,
             hourNumber: data.hourNumber,
-            students: data.students,
-            lecturer: data.lecturer,
-            requireRoom: data.requireRoom,
             roomCode: data.roomCode,
-            classSectionCode: data.classSectionCode
+            requireRoom: data.requireRoom
         })
         return {createdClass, err: null}
     } catch(err) {
@@ -22,9 +21,32 @@ const create = async (data) => {
     }
 }
 
-const retriveAll = async () => {
+const retrieveAll = async () => {
     try {
-        const classes = await Class.findll()
+        const classes = await Class.findAll()
+        return {classes, err: null}
+    } catch (err) {
+        return {err, classes: null}
+    }
+}
+
+const classRunning = async () => {
+    try {
+        var days = ['sun','mon','tue','wed','thu','fri','sat'];
+        var d = new Date();
+        const class1 = await Class.findAll({
+            where: {
+               day : days[d.getDay()]
+            }
+        })
+        const class2 = await Class.findAll({
+            where: {
+               day: {
+                  [Sequelize.Op.not]: days[d.getDay()]
+                }
+            }
+        })
+        const classes = [class1, class2];
         return {classes, err: null}
     } catch (err) {
         return {err, classes: null}
@@ -73,7 +95,8 @@ const ClassHelper = {
     create,
     update,
     remove,
-    retriveAll,
+    classRunning,
+    retrieveAll,
     createMulti
 }
 

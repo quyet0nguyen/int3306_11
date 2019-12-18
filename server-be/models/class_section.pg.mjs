@@ -2,8 +2,8 @@
  * Table Schema: ClassSection
  * Descript: Hoc phan
  * ID           auto
- * Code         string
- * Name         string
+ * Code         string P key
+ * Name         string 
  * CreditNumber number
  */
 
@@ -15,6 +15,7 @@ const ClassSection = db.define('class_sections', {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
+        primaryKey: true,
         validate: {
             notEmpty: true
         }

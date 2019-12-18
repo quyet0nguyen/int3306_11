@@ -16,15 +16,16 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
+import HomeIcon from '@material-ui/icons/Home';
+import BookIcon from '@material-ui/icons/Book';
 import { Link, NavLink } from "react-router-dom";
-
+import "../bootstrap.min.css"
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -78,7 +79,7 @@ const useStyles = makeStyles(theme => ({
   },
   nested: {
     paddingLeft: theme.spacing(4),
-  },
+  }
 }));
 
 export default function Layout(props) {
@@ -98,12 +99,13 @@ export default function Layout(props) {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
+        style={{backgroundColor:"#0288d1"}}
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar style={{backgroundColor:"#0288d1"}} >
+        <Toolbar >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -114,9 +116,9 @@ export default function Layout(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Adminstrator
+            Management Classroom
           </Typography>
-          <Button color="inherit" style={{float:"right"}}>Login</Button>
+          <Button color="inherit" className="ml-auto" >Login</Button>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -135,51 +137,45 @@ export default function Layout(props) {
         </div>
         <Divider />
         <List>
-          <NavLink 
-            to='/'
-            activeStyle={{
-              textDecoration: 'none',
-              color: 'blue'
-            }}
-          >
+          <Link to='/home'>
             <ListItem button>
-              <ListItemIcon><MailIcon /></ListItemIcon>
+              <ListItemIcon><HomeIcon /></ListItemIcon>
               <ListItemText primary="Home" />
             </ListItem>
-          </NavLink>
+          </Link>
           <Link to='/room-manager'>
             <ListItem button>
-              <ListItemIcon><MailIcon /></ListItemIcon>
+              <ListItemIcon><BookIcon /></ListItemIcon>
               <ListItemText primary="Room" />
             </ListItem>
           </Link>
           <Link to='/class-section-manager'>
             <ListItem button>
-              <ListItemIcon><MailIcon /></ListItemIcon>
+              <ListItemIcon><BookIcon /></ListItemIcon>
               <ListItemText primary="Class Section" />
             </ListItem>
           </Link>
           <Link to='/class-manager'>
             <ListItem button>
-              <ListItemIcon><MailIcon /></ListItemIcon>
+              <ListItemIcon><BookIcon /></ListItemIcon>
               <ListItemText primary="Class" />
             </ListItem>
           </Link>
           <Link to='/request-manager'>
             <ListItem button>
-              <ListItemIcon><MailIcon /></ListItemIcon>
+              <ListItemIcon><BookIcon /></ListItemIcon>
               <ListItemText primary="Request" />
             </ListItem>
           </Link>
           <Link to='/account-manager'>
             <ListItem button>
-              <ListItemIcon><MailIcon /></ListItemIcon>
+              <ListItemIcon><BookIcon /></ListItemIcon>
               <ListItemText primary="Account" />
             </ListItem>
           </Link>
           <Link to='/about'>
             <ListItem button>
-              <ListItemIcon><MailIcon /></ListItemIcon>
+              <ListItemIcon><BookIcon /></ListItemIcon>
               <ListItemText primary="About 	&amp; Contact" />
             </ListItem>
           </Link>

@@ -10,7 +10,7 @@ import ClassPage from './components/Manage/ManagerClass/ClassPage'
 import ClassSectionPage from './components/Manage/ManageClassSection/ClassSectionPage'
 import RoomPage from './components/Manage/ManageRoom/RoomPage'
 import RequestManagerPage from './components/Manage/ManageRequest/RequestManager'
-
+import Login from './components/Login'
 
 class App extends React.Component {
   componentDidMount() {
@@ -33,10 +33,10 @@ class App extends React.Component {
     
     return (
       <Router>
-        <Layout>
+        <Switch>
+         <Layout>
           <div>
-            <Switch>
-              <Route path="/" exact component={HomePage} />
+              <Route path="/home" component={HomePage} />
               <Route 
                 path="/account-manager" 
                 render={() => <AccountPage
@@ -66,9 +66,9 @@ class App extends React.Component {
                 render={() => <RequestManagerPage
                 />}
               />
-            </Switch>
-          </div>
-        </Layout>
+            </div>
+          </Layout>
+        </Switch>
       </Router>
     )
   }

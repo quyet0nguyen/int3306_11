@@ -1,17 +1,15 @@
 /**
  * Table Schema: Class
  * ID               auto
- * Code             string
- * StudentNumber    number
- * ClassSectionCode foreignKey
- * RoomCode         foreignKey
- * Semester         string
+ * Lecture         string F key
+ * Code             string P key 
+ * ClassSectionCode foreignKey F key
+ * TeacherCode      string
  * Day              number(enum: Day of week)
- * StartTime        number
+ * StartAt       number
  * HourNumber       number
+ * RoomCode         foreignKey F key
  * RequireRoom      string(enum)
- * Students         array<string> (studentCode = username)
- * Lecturer         string (LecturerCode = username)
  */
 
 import Sequelize from 'sequelize'
@@ -21,28 +19,45 @@ import ClassSection from './class_section.pg.mjs'
 import Account from './account.pg.mjs'
 
 const Class = db.define('classes', {
+    lecture: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        unique: false,
+        validate: {
+            notEmpty: false,
+        },
+        references: {
+            model: ClassSection,
+            key: 'name'
+        }
+    },
     code: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: false,
+        primaryKey: true,
         validate: {
             notEmpty: true
         }
     },
-    studentNumber: {
-        type: Sequelize.INTEGER,
+    classSectionCode: {
+        type: Sequelize.STRING,
         allowNull: true,
         unique: false,
         validate: {
-            notEmpty: false
+            notEmpty: false,
+        },
+        references: {
+            model: ClassSection,
+            key: 'code'
         }
     },
-    semester: {
+    teacherCode: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: false,
         validate: {
-            notEmpty: true
+            notEmpty: false,
         }
     },
     day: {
@@ -54,14 +69,14 @@ const Class = db.define('classes', {
             isIn: [['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']]
         }
     },
-    startTime: {
+    startAt: {
         type: Sequelize.INTEGER,
         allowNull: true,
         unique: false,
         validate: {
             notEmpty: false,
-            min: 6,
-            max: 22
+            min: 1,
+            max: 12
         }
     },
     hourNumber: {
@@ -72,35 +87,6 @@ const Class = db.define('classes', {
             notEmpty: true,
             min: 1,
             max: 10
-        }
-    },
-    students: {
-        type: Sequelize.ARRAY(Sequelize.STRING),
-        allowNull: true,
-        unique: false,
-        validate: {
-            notEmpty: false
-        }
-    },
-    lecturer: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        unique: false,
-        validate: {
-            notEmpty: false,
-        },
-        references: {
-            model: Account,
-            key: 'username'
-        }
-    },
-    requireRoom: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: false,
-        validate: {
-            notEmpty: true,
-            isIn: [['theory', 'practise']]
         }
     },
     roomCode: {
@@ -115,16 +101,13 @@ const Class = db.define('classes', {
             key: 'code'
         }
     },
-    classSectionCode: {
+    requireRoom: {
         type: Sequelize.STRING,
-        allowNull: true,
+        allowNull: false,
         unique: false,
         validate: {
-            notEmpty: false,
-        },
-        references: {
-            model: ClassSection,
-            key: 'code'
+            notEmpty: true,
+            isIn: [['theory', 'practise']]
         }
     }
 })

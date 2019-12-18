@@ -9,6 +9,7 @@ import Router from './router/index.mjs'
 import fileUpload from 'express-fileupload'
 import RoomController from './controllers/room.controller.mjs'
 import ClassSectionController from './controllers/class_section.controller.mjs'
+import ClassController from './controllers/class.controller.mjs'
 
 const app = express()
 const __dirname = path.resolve(path.dirname(''))
@@ -50,7 +51,7 @@ app.use((err, req, res,next) => {
  * Connect to database
  */
 
- connect()
+connect()
 
 app.get('/room-manager',RoomController.getAll)
 app.post('/room-manager-add',RoomController.create)
@@ -61,6 +62,13 @@ app.get('/class-section-manager',ClassSectionController.getAll)
 app.post('/class-section-manager-add',ClassSectionController.create)
 app.post('/class-section-manager-update',ClassSectionController.update)
 app.post('/class-section-manager-delete',ClassSectionController.removeByID)
+
+app.get('/class-manager',ClassController.getAll)
+app.post('/class-manager-add',ClassController.create)
+app.post('/class-manager-update',ClassController.update)
+app.post('/class-manager-delete',ClassController.removeByID)
+
+app.get('/home',ClassController.getClassRunning)
 
 /**
  * Start server backend

@@ -1,7 +1,7 @@
 /**
  * Table Schema: Room
  * ID       auto
- * Code     string
+ * Code     string  P key
  * Type     string(enum)
  * Position string
  * Capacity number
@@ -15,6 +15,7 @@ const Room = db.define('rooms', {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
+        primaryKey: true,
         validate: {
             notEmpty: true,
         }
