@@ -25,17 +25,12 @@ const Class = db.define('classes', {
         unique: false,
         validate: {
             notEmpty: false,
-        },
-        references: {
-            model: ClassSection,
-            key: 'name'
         }
     },
     code: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: false,
-        primaryKey: true,
         validate: {
             notEmpty: true
         }
@@ -46,10 +41,6 @@ const Class = db.define('classes', {
         unique: false,
         validate: {
             notEmpty: false,
-        },
-        references: {
-            model: ClassSection,
-            key: 'code'
         }
     },
     teacherCode: {
@@ -95,10 +86,6 @@ const Class = db.define('classes', {
         unique: false,
         validate: {
             notEmpty: false,
-        },
-        references: {
-            model: Room,
-            key: 'code'
         }
     },
     requireRoom: {

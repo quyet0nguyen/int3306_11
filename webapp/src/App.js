@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {connect} from 'react-redux'
 import Layout from './components/Layout/Drawer'
+import {Form} from 'antd'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import HomePage from './components/Home/HomePage'
 import AccountPage from './components/Manage/ManageAccount/AccountPage'
@@ -11,6 +12,7 @@ import ClassSectionPage from './components/Manage/ManageClassSection/ClassSectio
 import RoomPage from './components/Manage/ManageRoom/RoomPage'
 import RequestManagerPage from './components/Manage/ManageRequest/RequestManager'
 import Login from './components/Login'
+import Register from './components/Register'
 
 class App extends React.Component {
   componentDidMount() {
@@ -30,13 +32,24 @@ class App extends React.Component {
   }
   render() {
     console.log(this.props)
-    
+    const WrappedLoginForm = Form.create({name: 'login'})(Login);
     return (
       <Router>
-        <Switch>
-         <Layout>
+        
           <div>
-              <Route path="/home" component={HomePage} />
+            <Switch>
+              <Route path="/" exact component={Login} />
+              <Route
+                path="/signup"
+                render={() => <Register
+                />}
+              />
+              <Layout>
+              <Route
+                path="/home"
+                render={() => <HomePage
+                />}
+              />
               <Route 
                 path="/account-manager" 
                 render={() => <AccountPage
@@ -66,9 +79,10 @@ class App extends React.Component {
                 render={() => <RequestManagerPage
                 />}
               />
-            </div>
-          </Layout>
-        </Switch>
+              </Layout>
+            </Switch>
+          </div>
+        
       </Router>
     )
   }

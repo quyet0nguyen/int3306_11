@@ -9,11 +9,9 @@ const connect = () => {
     db.authenticate()
         .then(() => {
             console.log('Connection has been established successfully.')
-            Room.sync()
-            Account.sync()
-            ClassSection.sync()
             Class.sync()
-          	RequestForm.sync()
+            Room.sync()
+            ClassSection.sync()
         })
         .catch(err => {
             console.log('Unabale to connect to the database: ', err)

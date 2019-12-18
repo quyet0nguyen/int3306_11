@@ -1,95 +1,74 @@
-import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-import axios from 'axios';
+var React = require('react');
+require('../bootstrap.min.css');
+require('./signupForm.css');
 
-class Register extends Component {
-  constructor(props){
-    super(props);
-    this.state={
-      first_name:'',
-      last_name:'',
-      email:'',
-      password:''
+module.exports = SignUpForm;
+function SignUpForm(props){
+  React.Component.call(this, props);
+  this.state = {
+        taskName: ""
     }
-  }
 
-  handleClick(event){
-    var apiBaseUrl = "http://localhost:4000/api/";
-    console.log("values",this.state.first_name,this.state.last_name,this.state.email,this.state.password);
-    //To be done:check for empty values before hitting submit
-    var self = this;
-    var payload={
-    "first_name": this.state.first_name,
-    "last_name":this.state.last_name,
-    "email":this.state.email,
-    "password":this.state.password
-    }
-    axios.post(apiBaseUrl+'/register', payload)
-   .then(function (response) {
-     console.log(response);
-     if(response.data.code == 200){
-      //  console.log("registration successfull");
-       var loginscreen=[];
-       loginscreen.push(<Login parentContext={this}/>);
-       var loginmessage = "Not Registered yet.Go to registration";
-       self.props.parentContext.setState({loginscreen:loginscreen,
-       loginmessage:loginmessage,
-       buttonLabel:"Register",
-       isLogin:true
-        });
-     }
-   })
-   .catch(function (error) {
-     console.log(error);
-   });
-  }
-  }
-
-  render() {
-    return (
-      <div>
-        <MuiThemeProvider>
-          <div>
-          <AppBar
-             title="Register"
-           />
-           <TextField
-             hintText="Enter your First Name"
-             floatingLabelText="First Name"
-             onChange = {(event,newValue) => this.setState({first_name:newValue})}
-             />
-           <br/>
-           <TextField
-             hintText="Enter your Last Name"
-             floatingLabelText="Last Name"
-             onChange = {(event,newValue) => this.setState({last_name:newValue})}
-             />
-           <br/>
-           <TextField
-             hintText="Enter your Email"
-             type="email"
-             floatingLabelText="Email"
-             onChange = {(event,newValue) => this.setState({email:newValue})}
-             />
-           <br/>
-           <TextField
-             type = "password"
-             hintText="Enter your Password"
-             floatingLabelText="Password"
-             onChange = {(event,newValue) => this.setState({password:newValue})}
-             />
-           <br/>
-           <RaisedButton label="Submit" primary={true} style={style} onClick={(event) => this.handleClick(event)}/>
+    this.render = function() {
+  return(
+  <div className="bg">
+    <div className="container col-md-6">
+      <img className="logo my-3 mx-auto d-block" width="120px" />
+      <h1 className="text-center my-3 textwhite">Hệ Thống Quản Lý Phòng Học</h1>
+      <form className="needs-validation">
+        <div className="row">
+          <div className="col-md-6 mb-3">
+            <label htmlFor="firstName" className="textwhite">First Name</label>
+            <input type="text" className="form-control " id="firstName" />
           </div>
-         </MuiThemeProvider>
-      </div>
-    );
+          <div className="col-md-6 mb-3">
+            <label htmlFor="lastName" className="textwhite">Last Name</label>
+            <input type="text" className="form-control" id="lastName" />
+          </div>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="userName" className="textwhite">Chọn Tên Người Dùng Của Bạn</label>
+          <input type="text" className="form-control" id="userName" placeholder="UserName" />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="passWord" className="textwhite">Tạo Mật Khẩu</label>
+          <input type="password" className="form-control" id="password" />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="passWord1" className="textwhite">Xác Nhận Mật Khẩu Của Bạn</label>
+          <input type="password" className="form-control" id="password1" />
+        </div>
+
+        <label htmlFor="birthDay" className="textwhite">Sinh Nhật</label>
+        <div className="row mb-3">
+          <input type="text" id="date" placeholder="Date" className="col-md-3 mx-3 form-control" />
+          <input type="text" id="month" placeholder="Month" className="col-md-3 mx-3 form-control" />
+          <input type="text" id="year" placeholder="Year" className="col-md-3 mx-3 form-control" />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="sex" className="textwhite">Giới Tính</label>
+          <select className="custom-select d-block col-md-6" id="sex">
+            <option value>Choose...</option>
+            <option>Nam</option>
+            <option>Nữ</option>
+          </select>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="function" className="textwhite">Chức Vụ</label>
+          <select className="custom-select d-block col-md-6" id="function">
+            <option value>Choose...</option>
+            <option>Sinh Viên</option>
+            <option>Giáo Viên</option>
+            <option>Nhân Viên Phòng Giáo Vụ</option>
+          </select>
+        </div>
+        <hr className="mb-4" />
+        <button className="btn btn-primary btn-lg btn-block">Đăng Kí</button>
+      </form>
+    </div>
+  </div>
+  );
   }
 }
-const style = {
-  margin: 15,
-};
-export default Register;
+
+SignUpForm.prototype = Object.create(React.Component.prototype);

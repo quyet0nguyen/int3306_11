@@ -1,0 +1,13 @@
+insert into classes (lecture,code,"classSectionCode","teacherCode",day,"startAt","hourNumber","roomCode","requireRoom")
+values ('Tin học cơ sở 4','INT1106','INT1106 1','GV120008','thu',1,2,'101 G2','theory'),
+	    ('Tin học cơ sở 4','INT1106','INT1106 1','Khoa CNTT','thu',10,2,'202 G2','practice'),
+		('Tin học cơ sở 4','INT1106','INT1106 1','GV120008','fri',10,2,'202 G2','practice'),
+		('Cấu trúc dữ liệu và giải thuật','INT2203','INT2203 1','GV120011','mon',5,3,'303 G2','theory'),
+		('Cấu trúc dữ liệu và giải thuật','INT2203','INT2203 1','GV120011','wed',5,3,'303 G2','theory'),
+		('Cấu trúc dữ liệu và giải thuật','INT2203','INT2203 1','Khoa CNTT','thu',5,2,'207 G2','practice'),
+		('Toán rời rạc','INT1050','INT1050 1','GV120008','tue',5,3,'101 G2','theory'),
+		('Toán rời rạc','INT1050','INT1050 2','GV120008','tue',5,3,'101 G2','theory'),
+		('Phát triển ứng dụng web','INT1050','INT1050 1','GV120015','mon',11,2,'103 G2','theory'),
+		('Phát triển ứng dụng web','INT1050','INT1050 1','GV120015','wed',11,2,'207 G2','practice'),
+		('Xác suất thống kê','MAT1101','MAT1101 1','GV120020','mon',10,3,'101 G2','theory'),
+		('Xác suất thống kê','MAT1101','MAT1101 2','GV120020','tue',10,3,'103 G2','theory');
