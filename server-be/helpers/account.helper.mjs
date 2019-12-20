@@ -43,6 +43,22 @@ const update = async (id, data) => {
     }
 }
 
+const checkAccount = async (account) => {
+    try {
+        let accounts = await Account.findAll({
+            limit: 1,
+            where: {
+                username: account.username,
+                password: account.password
+            }
+        })
+        
+        return accounts[0]
+    } catch(error) {
+        return null
+    }
+}
+
 const remove = async (id) => {
     try {
         const account = await Account.findByPk(id)
@@ -80,7 +96,8 @@ const AccountHelper = {
     update,
     remove,
     retrieveAll,
-    createMulti
+    createMulti,
+    checkAccount
 }
 
 export default AccountHelper

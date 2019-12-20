@@ -98,3 +98,8 @@ export function deleteClassSection(payload) {
 /**
  * Request Form api
  */
+
+
+ export function login(payload){
+    return client.post('/login',payload)
+ }

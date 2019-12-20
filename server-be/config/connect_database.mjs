@@ -12,6 +12,7 @@ const connect = () => {
             Class.sync()
             Room.sync()
             ClassSection.sync()
+            Account.sync()
         })
         .catch(err => {
             console.log('Unabale to connect to the database: ', err)

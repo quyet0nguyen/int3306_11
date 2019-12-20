@@ -19,6 +19,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import HomeIcon from '@material-ui/icons/Home';
 import BookIcon from '@material-ui/icons/Book';
 import { Link, NavLink } from "react-router-dom";
+import {useAuth} from '../../context/auth'
 import "../bootstrap.min.css"
 
 const drawerWidth = 240;
@@ -86,6 +87,7 @@ export default function Layout(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const {setAuthTokens} = useAuth();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -94,7 +96,9 @@ export default function Layout(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+   function logOut(){
+      setAuthTokens();
+   }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -118,7 +122,7 @@ export default function Layout(props) {
           <Typography variant="h6" noWrap>
             Management Classroom
           </Typography>
-          <Button color="inherit" className="ml-auto" >Login</Button>
+          <Button color="inherit" className="ml-auto" onClick={logOut} >Logout</Button>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -137,50 +141,37 @@ export default function Layout(props) {
         </div>
         <Divider />
         <List>
-          <Link to='/home'>
+          <Link to='/' style={{ textDecoration: 'none'}}>
             <ListItem button>
               <ListItemIcon><HomeIcon /></ListItemIcon>
               <ListItemText primary="Home" />
             </ListItem>
           </Link>
-          <Link to='/room-manager'>
+          <Link to='/room-manager' style={{ textDecoration: 'none'}}>
             <ListItem button>
               <ListItemIcon><BookIcon /></ListItemIcon>
               <ListItemText primary="Room" />
             </ListItem>
           </Link>
-          <Link to='/class-section-manager'>
+          <Link to='/class-section-manager' style={{ textDecoration: 'none'}}>
             <ListItem button>
               <ListItemIcon><BookIcon /></ListItemIcon>
               <ListItemText primary="Class Section" />
             </ListItem>
           </Link>
-          <Link to='/class-manager'>
+          <Link to='/class-manager' style={{ textDecoration: 'none'}}>
             <ListItem button>
               <ListItemIcon><BookIcon /></ListItemIcon>
               <ListItemText primary="Class" />
             </ListItem>
           </Link>
-          <Link to='/request-manager'>
-            <ListItem button>
-              <ListItemIcon><BookIcon /></ListItemIcon>
-              <ListItemText primary="Request" />
-            </ListItem>
-          </Link>
-          <Link to='/account-manager'>
-            <ListItem button>
-              <ListItemIcon><BookIcon /></ListItemIcon>
-              <ListItemText primary="Account" />
-            </ListItem>
-          </Link>
-          <Link to='/about'>
-            <ListItem button>
-              <ListItemIcon><BookIcon /></ListItemIcon>
-              <ListItemText primary="About 	&amp; Contact" />
-            </ListItem>
-          </Link>
         </List>
         <Divider />
+        <div style={{marginbottom:'0px',marginLeft:'20px', color:'#757575'}}>
+        <p style={{marginTop:'20px'}}>About & Contact </p>
+        <p>Email: quyet0nguyen@gmail.com </p>
+        <p>Phone: 098765432</p>
+        </div>
       </Drawer>
       <main
         className={clsx(classes.content, {

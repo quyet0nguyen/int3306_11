@@ -12,11 +12,19 @@ import ClassSectionPage from './components/Manage/ManageClassSection/ClassSectio
 import RoomPage from './components/Manage/ManageRoom/RoomPage'
 import RequestManagerPage from './components/Manage/ManageRequest/RequestManager'
 import Login from './components/Login'
-import Register from './components/Register'
+import PrivateRoute from './components/PrivateRoute.js'
+import {AuthContext} from './context/auth.js'
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        authTokens: null
+    }
+  }
   componentDidMount() {
     this.props.dispatch(fetchAccounts());
+    
   }
 
   onCreateAccount = ({username, password, role}) => {
@@ -30,27 +38,27 @@ class App extends React.Component {
   onUpdateAccount = ({id, body}) => {
     this.props.dispatch(updateAccount({id, body}))
   }
+
+  setTokens = (data) => {
+    localStorage.setItem("tokens", JSON.stringify(data))
+    this.setState({authTokens: data})
+  }
+
   render() {
-    console.log(this.props)
-    const WrappedLoginForm = Form.create({name: 'login'})(Login);
+    const {authTokens} = this.state
     return (
+      <AuthContext.Provider value={{authTokens, setAuthTokens: this.setTokens}}>
       <Router>
-        
           <div>
             <Switch>
-              <Route path="/" exact component={Login} />
-              <Route
-                path="/signup"
-                render={() => <Register
-                />}
-              />
+              <Route path="/login" exact component={Login} />
               <Layout>
-              <Route
-                path="/home"
+              <PrivateRoute
+                 exact path="/"
                 render={() => <HomePage
                 />}
               />
-              <Route 
+              <PrivateRoute 
                 path="/account-manager" 
                 render={() => <AccountPage
                   accounts={this.props.accounts}
@@ -59,22 +67,22 @@ class App extends React.Component {
                   onUpdateAccount={this.onUpdateAccount}
                 />}
               />
-              <Route 
+              <PrivateRoute 
                 path="/class-manager" 
                 render={() => <ClassPage
                 />}
               />
-              <Route 
+              <PrivateRoute 
                 path="/class-section-manager" 
                 render={() => <ClassSectionPage
                 />}
               />
-              <Route 
+              <PrivateRoute 
                 path="/room-manager" 
                 render={() => <RoomPage
                 />}
               />
-              <Route 
+              <PrivateRoute 
                 path="/request-manager" 
                 render={() => <RequestManagerPage
                 />}
@@ -84,6 +92,7 @@ class App extends React.Component {
           </div>
         
       </Router>
+      </AuthContext.Provider>
     )
   }
 }
