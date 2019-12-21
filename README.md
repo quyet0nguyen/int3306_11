@@ -61,7 +61,7 @@ Phần mềm “quản lý phòng học” của nhóm gồm có các chức nă
 ![Alt ER](documents/ManageRoomClass.png "Database Model")
 
 ### Mô hình ngiệp vụ
-![Alt ER](documents/Bussiness Model "Business Model")
+![Alt ER](documents/Bussiness Model.png "Business Model")
 
 
 
