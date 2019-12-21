@@ -12,6 +12,8 @@
 ## Phần 1: Tổng Quan <a name="introduction"></a>
 Hiện nay, do nhu cầu quản lý và sắp xếp lịch trình ngày càng cần thiết trong cuộc sống. Việc lên lịch giúp mọi người có thể quản lý, sắp xếp công việc một cách hợp lý, đúng quy trình. Nhất là trong môi trường có tính tổ chức cao như trường học, công sở. Nhằm phục vụ nhu cầu đó, nhóm đã phát triển phần mềm “quản lý phòng học”. Phần mềm có tác dụng giúp đỡ trường học trong khâu quản lý phòng học. Phần mềm của nhóm gồm có hai phần: Sắp xếp phòng học theo lịch học và danh sách kèm theo thông tin phòng học có sẵn.
 
+Slide thuyết trình : https://docs.google.com/presentation/d/e/2PACX-1vRkVEvb5SzMvq_5X0NdZbIUExEeokBVpsSS28HmgbeRjXA6T9bk2Lv5uVpVWk-UwwCRH41SXz_J2o7f/pub?start=false&loop=false&delayms=30000
+
 ### Công nghệ sử dụng <a name="tech-used"></a>
 - Server backend: Nodejs + express framework
 - Database: Postgres
