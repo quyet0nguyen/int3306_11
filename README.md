@@ -1,6 +1,7 @@
 # Mục Lục
 1. [Phần 1: Tổng quan về phần mềm](#introduction)
     1. [Công nghệ sử dụng](#tech-used)
+    2. [Hướng dẫn cài đặt và sử dụng] (#setupUse)
 2. [Phần 2: Mô tả chức năng có trong phần mềm](#paragraph1)
     1. [Các Actors](#list-actors)
     2. [Bảng chức năng](#function-table)
@@ -18,8 +19,13 @@ Hiện nay, do nhu cầu quản lý và sắp xếp lịch trình ngày càng c�
 
 ![alt Nodejs](http://pluspng.com/img-png/nodejs-logo-png-nice-images-collection-node-js-desktop-wallpapers-370.png)
 
+### Hướng dẫn cài đặt và Sử dụng <a name="setupUse"></a>
+- Khởi tạo một Database trống tại postgres của bạn. Sau đó chỉnh sửa thông tin về database, tài khoản, mật khẩu của postgres tại int3306_11/server-be/config/database.mjs
+-  Khởi chạy server tại int3306_11/server-be: Sử dụng câu lệnh yarn để cài đặt toàn bộ package và yarn start để khởi chạy server. Server khởi chạy tại localhost:5555
+- Kiểm tra postgres, ta thấy trong ứng dụng xuất hiện 4 bảng trống. Ta lấy dữ liệu trong file documents/data.txt và thực hiện câu lệnh query dữ liệu để insert data vào trong các bảng.
+- Khởi động web app tại int3306_11/webapp: Sử dụng câu lệnh yarn để cài đặt toàn bộ package và yarn start để khởi chạy client. Client khởi chạy tại localhost:3000
+- Ta cần đăng nhập tài khoản để sử dụng. VD: username: root pass: abc123
 
-## Phần 2: Mô tả chức năng <a name="paragraph1"></a>
 Phần mềm “quản lý phòng học” của nhóm gồm có các chức năng được mô tả trong bảng sau:
 
 ### Các Actors <a name="list-actors"></a>
