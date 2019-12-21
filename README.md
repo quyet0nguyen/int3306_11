@@ -12,20 +12,21 @@
 ## Phần 1: Tổng Quan <a name="introduction"></a>
 Hiện nay, do nhu cầu quản lý và sắp xếp lịch trình ngày càng cần thiết trong cuộc sống. Việc lên lịch giúp mọi người có thể quản lý, sắp xếp công việc một cách hợp lý, đúng quy trình. Nhất là trong môi trường có tính tổ chức cao như trường học, công sở. Nhằm phục vụ nhu cầu đó, nhóm đã phát triển phần mềm “quản lý phòng học”. Phần mềm có tác dụng giúp đỡ trường học trong khâu quản lý phòng học. Phần mềm của nhóm gồm có hai phần: Sắp xếp phòng học theo lịch học và danh sách kèm theo thông tin phòng học có sẵn.
 
-### Công nghệ sử dụng <a name="tech-use"></a>
+### Công nghệ sử dụng <a name="tech-used"></a>
 - Server backend: Nodejs + express framework
 - Database: Postgres
 - App Frontend: Reactjs, Redux, Material UI, Bootstrap
 
 ![alt Nodejs](http://pluspng.com/img-png/nodejs-logo-png-nice-images-collection-node-js-desktop-wallpapers-370.png)
 
-### Hướng dẫn cài đặt và Sử dụng <a name="setupUse"></a>
+### Hướng dẫn cài đặt và sử dụng <a name="setupUse"></a>
 - Khởi tạo một Database trống tại postgres của bạn. Sau đó chỉnh sửa thông tin về database, tài khoản, mật khẩu của postgres tại int3306_11/server-be/config/database.mjs
 -  Khởi chạy server tại int3306_11/server-be: Sử dụng câu lệnh yarn để cài đặt toàn bộ package và yarn start để khởi chạy server. Server khởi chạy tại localhost:5555
 - Kiểm tra postgres, ta thấy trong ứng dụng xuất hiện 4 bảng trống. Ta lấy dữ liệu trong file documents/data.txt và thực hiện câu lệnh query dữ liệu để insert data vào trong các bảng.
 - Khởi động web app tại int3306_11/webapp: Sử dụng câu lệnh yarn để cài đặt toàn bộ package và yarn start để khởi chạy client. Client khởi chạy tại localhost:3000
 - Ta cần đăng nhập tài khoản để sử dụng. VD: username: root pass: abc123
 
+## Phần 2: Mô tả các chức năng có trong phần mềm <a name="paragraph1"> </a>
 Phần mềm “quản lý phòng học” của nhóm gồm có các chức năng được mô tả trong bảng sau:
 
 ### Các Actors <a name="list-actors"></a>
