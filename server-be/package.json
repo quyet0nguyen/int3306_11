@@ -24,7 +24,7 @@
     "pg-hstore": "^2.3.3",
     "read-excel-file": "^4.0.4",
     "sequelize": "^5.19.4",
-    "xlsx": "^0.15.1"
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.3"
